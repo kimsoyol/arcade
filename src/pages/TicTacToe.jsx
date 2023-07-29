@@ -1,8 +1,12 @@
+import Board from "../components/TicTacToe/Board.jsx";
+function TicTacToe() {
 
-const TicTacToe  = () => {
-    return (
-        <>Tic-Tac-Toe</>
-    )
+
+  return (
+    <>
+      <Board />
+    </>
+  );
 }
 
-export default TicTacToe
+export default TicTacToe;
