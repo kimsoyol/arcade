@@ -1,1 +1,32 @@
 calculator, tic-tac-toe, weather, memory, calculator, todo
+
+
+ fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=d36f7c8b667e44728f061f5ac22a1b95`)
+            .then(res => res.json())
+            .then(data => {
+              setUserLocation({'lat': Math.trunc(data.latitude), 'lon':  Math.trunc(data.longitude)})
+            })
+            .catch(err => console.log(err))
+
+
+
+
+
+
+
+
+             {weather.daily.map((day) => (
+                    <Daily
+                      key={day.dt}
+
+                      time={day.dt}
+                      dayTemp={day.temp.day}
+                      nightTemp={day.temp.night}
+                      condition={day.weather[0].main}
+                      icon={day.weather[0].icon}
+                      humidity={day.humidity}
+                      unit={tempUnit}
+                      pop={day.pop}
+                      windSpeed={day.wind_speed}
+                    />
+                  ))}
