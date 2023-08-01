@@ -21,7 +21,7 @@ const Current = (props) => {
   return (
     <>
       <div className="text-color">
-        <h1 className="text-center font-semibold text-5xl">
+        <h1 className="text-center font-semibold text-5xl pt-4">
           {location.name}, {location.country}
         </h1>
         <h2 className="text-center text-2xl text-slate-400 py-3">{dateTime}</h2>
@@ -31,10 +31,13 @@ const Current = (props) => {
               {weather.weather[0].description}
             </p>
             <h1 className="weather-temp">
-              Temp - {Math.ceil(changeUnits(weather.temp, props.tempUnit))}°
+              Temp - {Math.round(changeUnits(weather.temp, props.tempUnit))}°
               {props.tempUnit}
             </h1>
-            <img src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`} alt=""/>
+            <img
+              src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
+              alt=""
+            />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
@@ -48,7 +51,7 @@ const Current = (props) => {
             <div>
               <p className="title">Feels like</p>
               <p className="value">
-                {Math.ceil(changeUnits(weather.feels_like, props.tempUnit))}°
+                {Math.round(changeUnits(weather.feels_like, props.tempUnit))}°
                 {props.tempUnit}
               </p>
             </div>
