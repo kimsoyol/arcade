@@ -30,3 +30,67 @@ calculator, tic-tac-toe, weather, memory, calculator, todo
                       windSpeed={day.wind_speed}
                     />
                   ))}
+
+
+
+
+  useEffect(() => {
+    async function fetchSearchLocation(searchLocation) {
+      const res = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${searchLocation}&appid=67d03874040b2f71abfe5074fadcb19e`)
+      const data = await res.json()
+      setFetchedLocation(data[0])
+      console.log('Fetch search location')
+    }
+
+    async function fetchWeather(lat,lon) {
+      const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=13&lon=100&appid=67d03874040b2f71abfe5074fadcb19e`)
+      const data = await res.json()
+      setWeather(data)
+      console.log('Fetch weather')
+      setLoading(false)
+    }
+    if (searchLocation) {
+      fetchSearchLocation(searchLocation)
+    }
+
+    if (!fetchedLocation){
+      setLoading(true)
+    } else {
+      const lat = Math.trunc(fetchedLocation.lat)
+      const lon = Math.trunc(fetchedLocation.lon)
+
+      fetchWeather(lat, lon)
+    }
+   //
+    console.log('search & weather effect')
+  },[searchLocation])
+
+  const handleSearch = (e) => {
+    if (e.key === "Enter" && e.target.value !== '') {
+      console.log('Search')
+      e.preventDefault()
+      setSearchLocation(e.target.value)
+      e.target.value = ''
+    }
+  }
+
+
+
+
+
+
+
+  i async function fetchUserLocation() {
+         try {
+           const res = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=d36f7c8b667e44728f061f5ac22a1b95`);
+           const data = await res.json();
+           setUserLocation(data);
+           setLoading(false); // Set loading to false after fetching is complete
+           console.log('fetch user location');
+         } catch (error) {
+           setError(error);
+           setLoading(false); // Set loading to false even if there's an error
+         }
+       }
+
+       fetchUserLocation();mport axios from 'axios';
