@@ -7,13 +7,10 @@ const regionNamesInEnglish = new Intl.DisplayNames(["en"], { type: "region" });
 const Weather = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const [searchLocation, setSearchLocation] = useState("");
-
   const [tempUnit, setTempUnit] = useState("C");
   const [weather, setWeather] = useState({});
   const [location, setLocation] = useState();
-  //const userLocation = { lat: 13, lon: 100 };
 
   useEffect(() => {
     axios
@@ -74,6 +71,7 @@ const Weather = () => {
         })
         .then((res) => {
           setWeather(res.data);
+          setError(null);
           setLoading(false);
           console.log("search and fetch");
         })
@@ -88,13 +86,17 @@ const Weather = () => {
 
   return (
     <div className="pt-14">
-      {loading && <div>Loading....</div>}
+      {loading && (
+        <div className="text-center pt-4 text-white text-3xl capitalize">
+          Loading....
+        </div>
+      )}
 
       {!loading && weather && weather.current && (
         <div className="mainContainer">
-          <div className="flex justify-center">
+          <div className="flex justify-center pb-4">
             <input
-              className="px-4 py-2 text-white bg-slate-900 border rounded-full focus:border-white focus:ring-white focus:outline-none focus:ring focus:ring-opacity-40"
+              className="px-4 py-2 text-white bg-slate-900 border rounded-full focus:border-white focus:ring-white focus:outline-none focus:ring focus:ring-opacity-40 "
               type="text"
               id="search"
               placeholder="Search location"
@@ -107,13 +109,39 @@ const Weather = () => {
               }}
             />
           </div>
-          {error && <div className="text-center pt-4 text-white text-3xl capitalize">{error}</div>}
+
+          {error && (
+            <div className="text-center pt-4 text-white text-3xl capitalize">
+              {error}
+            </div>
+          )}
           {!error && (
-            <Current
-              currentWeather={weather.current}
-              tempUnit={tempUnit}
-              location={location}
-            />
+            <div>
+              <div className="flex justify-center gap-1">
+                <button
+                  className={`bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full focus:outline-none focus:ring ${
+                    tempUnit === "C" ? "bg-gray-50" : "bg-gray-400"
+                  }`}
+                  onClick={() => setTempUnit("C")}
+                >
+                  C°
+                </button>
+                <button
+                  className={`bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full focus:outline-none focus:ring ${
+                    tempUnit === "F" ? "bg-gray-50" : "bg-gray-400"
+                  }`}
+                  onClick={() => setTempUnit("F")}
+                >
+                  F°
+                </button>
+              </div>
+
+              <Current
+                currentWeather={weather.current}
+                tempUnit={tempUnit}
+                location={location}
+              />
+            </div>
           )}
         </div>
       )}
