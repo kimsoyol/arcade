@@ -103,7 +103,7 @@ const Weather = () => {
               value={searchLocation}
               onChange={(e) => setSearchLocation(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === "Enter") {
+                if (e.target.value !== '' && e.key === "Enter") {
                   handleSearch();
                 }
               }}
