@@ -5,6 +5,7 @@ const Memesmory = () => {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [lose, setLose] = useState(false);
+  const [difficultyLevel, setDifficultyLevel] = useState("easy")
   const [clickedCards, setClickedCards] = useState([]);
   const handleRestart = () => {
     setLose(false);
@@ -13,8 +14,10 @@ const Memesmory = () => {
   const handleClick = (cardId) => {
     if (clickedCards.includes(cardId)) {
       setClickedCards([]);
+      if (score > bestScore) {
+        setBestScore(score);
+      }
       setScore(0);
-      setBestScore(bestScore + score);
       setLose(true);
     } else {
       setScore(score + 1);
@@ -29,7 +32,7 @@ const Memesmory = () => {
         <span>Best Score: {bestScore}</span>
       </div>
       {lose && <div onClick={handleRestart}>Restart the game?</div>}
-      {!lose && <Cards handleClick={handleClick} clickedCards={clickedCards} />}
+      {!lose && <Cards handleClick={handleClick} clickedCards={clickedCards} difficultyLevel={difficultyLevel} />}
     </div>
   );
 };

@@ -111,15 +111,21 @@ function shuffleArray(array) {
   return array;
 }
 
-function Cards({handleClick, clickedCards}) {
+function Cards({handleClick, clickedCards, difficultyLevel}) {
   const [memes, setMemes] = useState(memesCards);
   const [cards, setCards] = useState();
 
   useEffect(() => {
-    const easy = memes.slice(0, 6);
-    setCards(shuffleArray(easy));
+    // shuffle cards before slice
+    const shuffledMemes = shuffleArray(memes);
+    // get difficulty level
+    const numCards = difficultyLevel === "easy" ? 6 : difficultyLevel === "medium" ? 12 : 18;
+    // slice cards depends on difficulty level
+    const selectedCards  = shuffledMemes.slice(0, numCards);
+    // shuffle again and set cards to play
+    setCards(shuffleArray(selectedCards));
     console.log("card effect");
-  },[clickedCards]);
+  },[clickedCards, difficultyLevel]);
 
 
   return (
