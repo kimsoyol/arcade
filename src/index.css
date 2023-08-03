@@ -11,4 +11,7 @@
 
 body {
     height: 100vh;
+    background-color: rgb(21, 41, 69);
+    color: white;
 }
+

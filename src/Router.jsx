@@ -4,6 +4,7 @@ import TicTacToe from "./pages/TicTacToe.jsx";
 import Error from "./pages/Error.jsx";
 import Weather from "./pages/Weather.jsx";
 import Calculator from "./pages/Calculator.jsx";
+import Memesmory from "./pages/Memes-mory.jsx";
 
 
 const Router = () => {
@@ -24,6 +25,10 @@ const Router = () => {
         {
             path: "calculator",
             element: <Calculator />,
+        },
+        {
+            path: "memes-mory",
+            element: <Memesmory />,
         },
     ]);
 
