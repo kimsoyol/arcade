@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import uniqid from "uniqid"
 import "./memesmory.css";
 const memesCards = [
   {
-    id: 1,
+    num: 1,
     name: "Disaster Girl",
     url: "https://i.imgflip.com/23ls.jpg",
   },
@@ -12,92 +13,83 @@ const memesCards = [
     url: "https://i.imgflip.com/1bij.jpg",
   },
   {
-    id: 3,
+    num: 3,
     name: "Ancient Aliens",
     url: "https://i.imgflip.com/26am.jpg",
   },
   {
-    id: 4,
-    name: "Success Kid",
-    url: "https://i.imgflip.com/1bhk.jpg",
-  },
-  {
-    id: 5,
+    num: 5,
     name: "Is This A Pigeon",
     url: "https://i.imgflip.com/1o00in.jpg",
   },
   {
-    id: 6,
+    num: 6,
     name: "Y'all Got Any More Of That",
     url: "https://i.imgflip.com/21uy0f.jpg",
   },
   {
-    id: 7,
+    num: 7,
     name: "Oprah You Get A",
     url: "https://i.imgflip.com/gtj5t.jpg",
   },
   {
-    id: 8,
+    num: 8,
     name: "Bernie Sanders",
     url: "https://i.imgflip.com/3pdf2w.png",
   },
   {
-    id: 9,
+    num: 9,
     name: "Laughing Leo",
     url: "https://i.imgflip.com/4acd7j.png",
   },
   {
-    id: 10,
+    num: 10,
     name: "Think About It",
     url: "https://i.imgflip.com/1h7in3.jpg",
   },
   {
-    id: 11,
+    num: 11,
     name: "spiderman pointing at spiderman",
     url: "https://i.imgflip.com/1tkjq9.jpg",
   },
   {
-    id: 12,
+    num: 12,
     name: "Squidward window",
     url: "https://i.imgflip.com/145qvv.jpg",
   },
   {
-    id: 13,
+    num: 13,
     name: "Grandma Finds The Internet",
     url: "https://i.imgflip.com/1bhw.jpg",
   },
   {
-    id: 14,
+    num: 14,
     name: "Futurama Fry",
     url: "https://i.imgflip.com/1bgw.jpg",
   },
   {
-    id: 15,
+    num: 15,
     name: "Interesting Man",
     url: "https://i.imgflip.com/1bh8.jpg",
   },
   {
-    id: 16,
+    num: 16,
     name: "look at me",
     url: "https://i.imgflip.com/hmt3v.jpg",
   },
   {
-    id: 17,
+    num: 17,
     name: "Leonardo Cheers",
     url: "https://i.imgflip.com/39t1o.jpg",
   },
+
   {
-    id: 18,
-    name: "Skeptical Kid",
-    url: "https://i.imgflip.com/265k.jpg",
-  },
-  {
-    id: 19,
+    num: 19,
     name: "Three-headed dragon",
     url: "https://i.imgflip.com/33e92f.jpg",
   },
   {
-    id: 20,
+    num: 20,
     name: "Charlie Conspiracy",
     url: "https://i.imgflip.com/1itoun.jpg",
   },
@@ -111,36 +103,59 @@ function shuffleArray(array) {
   return array;
 }
 
-function Cards({handleClick, clickedCards, difficultyLevel}) {
+function Cards({ handleClick, difficultyLevel }) {
   const [memes, setMemes] = useState(memesCards);
   const [cards, setCards] = useState();
+  const [isFlipped, setIsFlipped] = useState(false);
 
   useEffect(() => {
     // shuffle cards before slice
     const shuffledMemes = shuffleArray(memes);
     // get difficulty level
-    const numCards = difficultyLevel === "easy" ? 6 : difficultyLevel === "medium" ? 12 : 18;
+    const numCards =
+      difficultyLevel === "easy" ? 6 : difficultyLevel === "medium" ? 12 : 18;
     // slice cards depends on difficulty level
-    const selectedCards  = shuffledMemes.slice(0, numCards);
-    // shuffle again and set cards to play
-    setCards(shuffleArray(selectedCards));
-    console.log("card effect");
-  },[clickedCards, difficultyLevel]);
+    setCards(shuffledMemes.slice(0, numCards));
 
+    console.log("card effect");
+  }, [difficultyLevel]);
+
+  const handleShuffle = () => {
+    setCards(cards.map((c)=>c.id = uniqid()))
+
+    setIsFlipped(true);
+    setCards(shuffleArray(cards))
+
+    setTimeout(() => {
+      setIsFlipped(false);
+    }, 400);
+
+    console.log("flip");
+  };
 
   return (
     <>
       {!cards && <div>Loading....</div>}
       {cards && (
-        <div className="cards-container place-content-center ">
+        <div className="cards_container place-content-center">
           {cards.map((meme) => (
-            <div
-              key={meme.id}
-              className="car bg-no-repeat bg-cover"
-              onClick={() => handleClick(meme.id)}
-            >
-              <img src={meme.url} alt="" className="card_img" />
-              <p className="card_text">{meme.name}</p>
+            <div key={meme.num} onClick={() => handleClick(meme.num)}>
+              <div
+                className={`card_inner ${isFlipped ? "open" : ""}`}
+                onClick={handleShuffle}
+              >
+                <div className="card_front">
+                  <img src={meme.url} alt="" className="card_img" />
+                  <p className="card_text">{meme.name}</p>
+                </div>
+                <div className="card_back">
+                  <img
+                    src="https://i.imgflip.com/1bhk.jpg"
+                    alt=""
+                    className="card_img"
+                  />
+                </div>
+              </div>
             </div>
           ))}
         </div>
