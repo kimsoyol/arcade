@@ -1,10 +1,36 @@
-
-
-
 .square {
-    width: 6rem;
-    height: 6rem;
-    background-color: aqua;
+  width: 6rem;
+  height: 6rem;
+  vertical-align: top;
+}
 
-    vertical-align: top;
+.board {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+}
+
+#s3,
+#s6 {
+  border-bottom: 1px solid lightgray;
+}
+
+#s1,
+#s2,
+#s4,
+#s5 {
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+}
+
+#s7,
+#s8 {
+  border-right: 1px solid lightgray;
 }

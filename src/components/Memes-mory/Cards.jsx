@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import uniqid from "uniqid"
+import uniqid from "uniqid";
 import "./memesmory.css";
 const memesCards = [
   {
-    num: 1,
+    id: 1,
     name: "Disaster Girl",
     url: "https://i.imgflip.com/23ls.jpg",
   },
@@ -13,83 +13,83 @@ const memesCards = [
     url: "https://i.imgflip.com/1bij.jpg",
   },
   {
-    num: 3,
+    id: 3,
     name: "Ancient Aliens",
     url: "https://i.imgflip.com/26am.jpg",
   },
   {
-    num: 5,
+    id: 5,
     name: "Is This A Pigeon",
     url: "https://i.imgflip.com/1o00in.jpg",
   },
   {
-    num: 6,
+    id: 6,
     name: "Y'all Got Any More Of That",
     url: "https://i.imgflip.com/21uy0f.jpg",
   },
   {
-    num: 7,
+    id: 7,
     name: "Oprah You Get A",
     url: "https://i.imgflip.com/gtj5t.jpg",
   },
   {
-    num: 8,
+    id: 8,
     name: "Bernie Sanders",
     url: "https://i.imgflip.com/3pdf2w.png",
   },
   {
-    num: 9,
+    id: 9,
     name: "Laughing Leo",
     url: "https://i.imgflip.com/4acd7j.png",
   },
   {
-    num: 10,
+    id: 10,
     name: "Think About It",
     url: "https://i.imgflip.com/1h7in3.jpg",
   },
   {
-    num: 11,
+    id: 11,
     name: "spiderman pointing at spiderman",
     url: "https://i.imgflip.com/1tkjq9.jpg",
   },
   {
-    num: 12,
+    id: 12,
     name: "Squidward window",
     url: "https://i.imgflip.com/145qvv.jpg",
   },
   {
-    num: 13,
+    id: 13,
     name: "Grandma Finds The Internet",
     url: "https://i.imgflip.com/1bhw.jpg",
   },
   {
-    num: 14,
+    id: 14,
     name: "Futurama Fry",
     url: "https://i.imgflip.com/1bgw.jpg",
   },
   {
-    num: 15,
+    id: 15,
     name: "Interesting Man",
     url: "https://i.imgflip.com/1bh8.jpg",
   },
   {
-    num: 16,
+    id: 16,
     name: "look at me",
     url: "https://i.imgflip.com/hmt3v.jpg",
   },
   {
-    num: 17,
+    id: 17,
     name: "Leonardo Cheers",
     url: "https://i.imgflip.com/39t1o.jpg",
   },
 
   {
-    num: 19,
+    id: 19,
     name: "Three-headed dragon",
     url: "https://i.imgflip.com/33e92f.jpg",
   },
   {
-    num: 20,
+    id: 20,
     name: "Charlie Conspiracy",
     url: "https://i.imgflip.com/1itoun.jpg",
   },
@@ -121,10 +121,8 @@ function Cards({ handleClick, difficultyLevel }) {
   }, [difficultyLevel]);
 
   const handleShuffle = () => {
-    setCards(cards.map((c)=>c.id = uniqid()))
-
     setIsFlipped(true);
-    setCards(shuffleArray(cards))
+    setCards(shuffleArray(cards));
 
     setTimeout(() => {
       setIsFlipped(false);
@@ -135,11 +133,11 @@ function Cards({ handleClick, difficultyLevel }) {
 
   return (
     <>
-      {!cards && <div>Loading....</div>}
+      {!cards && <div className="place-content-center">Loading....</div>}
       {cards && (
         <div className="cards_container place-content-center">
           {cards.map((meme) => (
-            <div key={meme.num} onClick={() => handleClick(meme.num)}>
+            <div key={meme.id} onClick={() => handleClick(meme.id)}>
               <div
                 className={`card_inner ${isFlipped ? "open" : ""}`}
                 onClick={handleShuffle}
