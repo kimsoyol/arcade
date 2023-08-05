@@ -11,26 +11,12 @@ const Weather = () => {
   const [searchLocation, setSearchLocation] = useState("");
   const [tempUnit, setTempUnit] = useState("C");
   const [weather, setWeather] = useState({});
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState({name:'Bangkok', country: 'Thailand'});
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.ipgeolocation.io/ipgeo?apiKey=24b507003ddc4873b85a3f3dba2d2b8e`,
-      )
-      .then((res) => {
-        let lat = Math.trunc(res.data.latitude);
-        let lon = Math.trunc(res.data.longitude);
-        setLocation({
-          name: res.data.country_capital,
-          country: res.data.country_name,
-        });
-        console.log("Fetched user location");
-        return axios.get(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=alerts,minutely,hourly&appid=c93fd1817f3fbe42aeac0a63076603b9`,
-        );
-      })
-      .then((res) => {
+    axios.get(
+          `https://api.openweathermap.org/data/2.5/onecall?lat=13&lon=100&exclude=alerts,minutely,hourly&appid=c93fd1817f3fbe42aeac0a63076603b9`,
+        ) .then((res) => {
         setWeather(res.data);
         setLoading(false);
         console.log("Fetched weather data");
