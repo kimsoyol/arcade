@@ -57,5 +57,6 @@
 }
 
 .lvl-btn:hover {
-  font-size: xxx-large;
+  transition: all ease-in-out 0.1s;
+  color: darkturquoise;
 }

@@ -15,7 +15,7 @@ function ChooseLevel({ handleLevel }) {
         </button>
       </div>
         <div className="flex justify-center pt-4">
-      <img src="src/assets/memes/start.jpg" alt="" />
+      <img src="https://i.imgur.com/6VS23Ci.jpg" alt="" />
         </div>
     </div>
   );

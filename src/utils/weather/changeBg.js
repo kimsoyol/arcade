@@ -25,3 +25,4 @@ function changeMainBg(image) {
   document.body.style.background = `url(${image}) no-repeat center center`;
   document.body.style.backgroundSize = "cover";
 }
+

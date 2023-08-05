@@ -72,7 +72,7 @@ function Board() {
 
   return (
     <>
-      <GoBack />
+
         <p className="text-center py-3">{status}</p>
       <div className="board">
         <div className="board-row">

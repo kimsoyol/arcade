@@ -1,6 +1,7 @@
 import Cards from "../components/Memes-mory/Cards.jsx";
 import { useState, useEffect } from "react";
 import ChooseLevel from "../components/Memes-mory/startGame.jsx";
+import GoBack from "../components/GoBack.jsx";
 
 const Memesmory = () => {
   const [score, setScore] = useState(0);
@@ -29,7 +30,6 @@ const Memesmory = () => {
       setBestScore(score);
     }
   }, [score, difficultyLevel]);
-
 
   // restart when lose
   const handleRestart = () => {
@@ -65,6 +65,7 @@ const Memesmory = () => {
 
   return (
     <div>
+      <GoBack />
       <div className="text-center">
         <div className="pe-2 score">Current Score: {score}</div>
         <div className="score">Best Score: {bestScore}</div>
@@ -72,22 +73,32 @@ const Memesmory = () => {
       {!difficultyLevel && <ChooseLevel handleLevel={handleLevel} />}
       {gameOver && (
         <div className="flex flex-col justify-center items-center text-4xl pt-6">
-          {lose && <div>
-            <p className='text-center'>You lose</p>
+          {lose && (
             <div>
-              <img src="src/assets/memes/lose.jpg" alt="lose img" className="w-80 pt-3"/>
-            </div>
-          </div>}
-          {win &&
+              <p className="text-center">You lose</p>
               <div>
-                <p className='text-center'>You Win</p>
-                <div>
-                  <div className="flex justify-center">
-
-                    <iframe width="360" height="202" src="https://imgflip.com/embed/7utc7m"></iframe>
-                  </div>
+                <img
+                  src="https://i.imgur.com/JPMHpht.jpg"
+                  alt="lose img"
+                  className="w-80 pt-3"
+                />
+              </div>
+            </div>
+          )}
+          {win && (
+            <div>
+              <p className="text-center">You Win</p>
+              <div>
+                <div className="flex justify-center">
+                  <iframe
+                    width="360"
+                    height="202"
+                    src="https://imgflip.com/embed/7utc7m"
+                  ></iframe>
                 </div>
-          </div>}
+              </div>
+            </div>
+          )}
           <p className="pt-2" onClick={handleRestart}>
             Play again?
           </p>
