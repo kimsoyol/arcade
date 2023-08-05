@@ -52,8 +52,10 @@
   background: transparent;
   padding: 2rem 4rem;
   color: aliceblue;
+  font-size: x-large;
+  font-weight: bold;
 }
 
 .lvl-btn:hover {
-  font-size: x-large;
+  font-size: xxx-large;
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import changeBg from "../utils/weather/changeBg.js";
 import Current from "../components/Weather/Current.jsx";
+import GoBack from "../components/GoBack.jsx";
 
 const regionNamesInEnglish = new Intl.DisplayNames(["en"], { type: "region" });
 const Weather = () => {
@@ -85,67 +86,70 @@ const Weather = () => {
   };
 
   return (
-    <div className="pt-14">
-      {loading && (
-        <div className="text-center pt-4 text-white text-3xl capitalize">
-          Loading....
-        </div>
-      )}
-
-      {!loading && weather && weather.current && (
-        <div className="mainContainer">
-          <div className="flex justify-center pb-4">
-            <input
-              className="px-4 py-2 text-white bg-slate-900 border rounded-full focus:border-white focus:ring-white focus:outline-none focus:ring focus:ring-opacity-40 "
-              type="text"
-              id="search"
-              placeholder="Search location"
-              value={searchLocation}
-              onChange={(e) => setSearchLocation(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.target.value !== '' && e.key === "Enter") {
-                  handleSearch();
-                }
-              }}
-            />
+    <>
+      <GoBack />
+      <div className="pt-14">
+        {loading && (
+          <div className="text-center pt-4 text-white text-3xl capitalize">
+            Loading....
           </div>
+        )}
 
-          {error && (
-            <div className="text-center pt-4 text-white text-3xl capitalize">
-              {error}
-            </div>
-          )}
-          {!error && (
-            <div>
-              <div className="flex justify-center gap-1">
-                <button
-                  className={`bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full focus:outline-none focus:ring ${
-                    tempUnit === "C" ? "bg-gray-50" : "bg-gray-400"
-                  }`}
-                  onClick={() => setTempUnit("C")}
-                >
-                  C°
-                </button>
-                <button
-                  className={`bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full focus:outline-none focus:ring ${
-                    tempUnit === "F" ? "bg-gray-50" : "bg-gray-400"
-                  }`}
-                  onClick={() => setTempUnit("F")}
-                >
-                  F°
-                </button>
-              </div>
-
-              <Current
-                currentWeather={weather.current}
-                tempUnit={tempUnit}
-                location={location}
+        {!loading && weather && weather.current && (
+          <div className="mainContainer">
+            <div className="flex justify-center pb-4">
+              <input
+                className="px-4 py-2 text-white bg-slate-900 border rounded-full focus:border-white focus:ring-white focus:outline-none focus:ring focus:ring-opacity-40 "
+                type="text"
+                id="search"
+                placeholder="Search location"
+                value={searchLocation}
+                onChange={(e) => setSearchLocation(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.target.value !== "" && e.key === "Enter") {
+                    handleSearch();
+                  }
+                }}
               />
             </div>
-          )}
-        </div>
-      )}
-    </div>
+
+            {error && (
+              <div className="text-center pt-4 text-white text-3xl capitalize">
+                {error}
+              </div>
+            )}
+            {!error && (
+              <div>
+                <div className="flex justify-center gap-1">
+                  <button
+                    className={`bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full focus:outline-none focus:ring ${
+                      tempUnit === "C" ? "bg-gray-50" : "bg-gray-400"
+                    }`}
+                    onClick={() => setTempUnit("C")}
+                  >
+                    C°
+                  </button>
+                  <button
+                    className={`bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full focus:outline-none focus:ring ${
+                      tempUnit === "F" ? "bg-gray-50" : "bg-gray-400"
+                    }`}
+                    onClick={() => setTempUnit("F")}
+                  >
+                    F°
+                  </button>
+                </div>
+
+                <Current
+                  currentWeather={weather.current}
+                  tempUnit={tempUnit}
+                  location={location}
+                />
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 export default Weather;

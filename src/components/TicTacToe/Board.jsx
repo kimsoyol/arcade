@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import "./board.css";
+
 function Square({ value, onSquareClick,id }) {
   return (
-    <button className="square" onClick={onSquareClick} id={id}>
+    <button className="square font-medium text-7xl" onClick={onSquareClick} id={id}>
       {value}
     </button>
   );
@@ -71,10 +72,9 @@ function Board() {
 
   return (
     <>
+      <GoBack />
         <p className="text-center py-3">{status}</p>
       <div className="board">
-
-
         <div className="board-row">
           <Square id="s1" value={squares[0]} onSquareClick={() => handleClick(0)} />
           <Square id="s2" value={squares[1]} onSquareClick={() => handleClick(1)} />

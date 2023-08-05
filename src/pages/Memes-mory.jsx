@@ -71,9 +71,23 @@ const Memesmory = () => {
       </div>
       {!difficultyLevel && <ChooseLevel handleLevel={handleLevel} />}
       {gameOver && (
-        <div className="text-4xl text-center pt-6">
-          {lose && <p>You lose</p>}
-          {win && <p>You Win</p>}
+        <div className="flex flex-col justify-center items-center text-4xl pt-6">
+          {lose && <div>
+            <p className='text-center'>You lose</p>
+            <div>
+              <img src="src/assets/memes/lose.jpg" alt="lose img" className="w-80 pt-3"/>
+            </div>
+          </div>}
+          {win &&
+              <div>
+                <p className='text-center'>You Win</p>
+                <div>
+                  <div className="flex justify-center">
+
+                    <iframe width="360" height="202" src="https://imgflip.com/embed/7utc7m"></iframe>
+                  </div>
+                </div>
+          </div>}
           <p className="pt-2" onClick={handleRestart}>
             Play again?
           </p>
