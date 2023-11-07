@@ -2,6 +2,7 @@
 const nextConfig = {}
 
 module.exports = {
+  distDir: 'dist',
   images: {
     remotePatterns: [
       {
@@ -19,3 +20,4 @@ module.exports = {
     ],
   },
 }
+
