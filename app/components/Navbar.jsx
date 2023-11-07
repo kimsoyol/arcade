@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from './neon.module.css'
+import styles from "./neon.module.css";
 
 const Navbar = () => {
   return (
@@ -8,7 +8,14 @@ const Navbar = () => {
         <h1 className={styles.neonText}>Arcade</h1>
       </Link>
 
-      <Link href="" className={`${styles.neonText} ${styles.flick}`}>Source Code</Link>
+      <Link
+        href="https://github.com/kimsoyol/arcade"
+        rel="noopener noreferrer"
+        target="_blank"
+        className={`${styles.neonText} ${styles.flick}`}
+      >
+        Source Code
+      </Link>
     </nav>
   );
 };

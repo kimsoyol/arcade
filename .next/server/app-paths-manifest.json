@@ -1,6 +1,4 @@
 {
-  "/page": "app/page.js",
-  "/weather/page": "app/weather/page.js",
-  "/tic-tac-toe/page": "app/tic-tac-toe/page.js",
-  "/memes-mory/page": "app/memes-mory/page.js"
+  "/memes-mory/page": "app/memes-mory/page.js",
+  "/page": "app/page.js"
 }
