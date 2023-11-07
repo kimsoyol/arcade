@@ -1,0 +1,48 @@
+.square {
+  min-width: 5.5rem;
+  height: 5.5rem;
+  vertical-align: top;
+}
+
+.board {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-width: 300px;
+
+}
+
+
+.bottom {
+  border-bottom: 3px solid lightgray;
+}
+
+.bottom_right {
+  border-bottom: 3px solid lightgray;
+  border-right: 3px solid lightgray;
+}
+
+.right {
+  border-right: 3px solid lightgray;
+}
+
+/* #s3,
+#s6 {
+  border-bottom: 1px solid lightgray;
+}
+
+#s1,
+#s2,
+#s4,
+#s5 {
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+}
+
+#s7,
+#s8 {
+  border-right: 1px solid lightgray;
+} */

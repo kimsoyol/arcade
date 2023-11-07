@@ -1,0 +1,80 @@
+.disable_pointer {
+  pointer-events: none;
+}
+
+.card,
+.card_container,
+.back {
+  width: 180px;
+  height: 250px;
+}
+
+.card {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 0;
+}
+
+.card:hover {
+  scale: 1.03;
+}
+
+.card:active {
+  scale: 0.95;
+}
+
+.card_container {
+  perspective: 1000px;
+}
+
+.card_inner {
+  position: relative;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: transform 0.85s;
+  animation: flip-card 0.85s;
+}
+
+.card_container.back .card_inner {
+  transform: rotateY(180deg);
+}
+
+.card_back {
+  transform: rotateY(180deg);
+}
+
+.card_front,
+.card_back {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.card_image {
+  width: 100%;
+  height: 200px;
+  object-fit: fill;
+  user-select: none;
+}
+
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  margin: 32px 0;
+}
+
+
+@keyframes flip-card {
+  from {
+    transform: rotateY(180deg);
+    pointer-events: none;
+  }
+
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+

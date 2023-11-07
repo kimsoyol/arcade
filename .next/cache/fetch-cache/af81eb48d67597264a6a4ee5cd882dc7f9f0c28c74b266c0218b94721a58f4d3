@@ -1,0 +1,1 @@
+{"kind":"FETCH","data":{"headers":{"connection":"keep-alive","content-length":"21","content-type":"application/json","date":"Tue, 07 Nov 2023 03:12:27 GMT","server":"nginx/1.25.2","vary":"Origin"},"body":"eyJpcCI6IjQ1LjQxLjEwNC42MCJ9","status":200,"url":"https://api.ipify.org/?format=json"},"revalidate":31536000,"tags":[]}

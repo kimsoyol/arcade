@@ -1,0 +1,120 @@
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[3]!./app/memes-mory/components/cards.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+.cards_disable_pointer__b_AJu {
+  pointer-events: none;
+}
+
+.cards_card__1QY_g,
+.cards_card_container__u2Pcz,
+.cards_back__TMaQp {
+  width: 180px;
+  height: 250px;
+}
+
+.cards_card__1QY_g {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 0;
+}
+
+.cards_card__1QY_g:hover {
+  scale: 1.03;
+}
+
+.cards_card__1QY_g:active {
+  scale: 0.95;
+}
+
+.cards_card_container__u2Pcz {
+  perspective: 1000px;
+}
+
+.cards_card_inner__qUmDo {
+  position: relative;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: transform 0.85s;
+  animation: cards_flip-card__gosfD 0.85s;
+}
+
+.cards_card_container__u2Pcz.cards_back__TMaQp .cards_card_inner__qUmDo {
+  transform: rotateY(180deg);
+}
+
+.cards_card_back__IfhRZ {
+  transform: rotateY(180deg);
+}
+
+.cards_card_front__Mgygs,
+.cards_card_back__IfhRZ {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.cards_card_image__1jQHH {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: fill;
+     object-fit: fill;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+
+.cards_cards__vxjif {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  margin: 32px 0;
+}
+
+
+@keyframes cards_flip-card__gosfD {
+  from {
+    transform: rotateY(180deg);
+    pointer-events: none;
+  }
+
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+
+
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[3]!./app/components/neon.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+.neon_neonText__f0seT {
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0B666A,
+    0 0 82px #0B666A, 0 0 92px #0B666A, 0 0 102px #0B666A, 0 0 151px #0B666A;
+}
+
+.neon_flick__DE7t1 {
+  animation: neon_flicker__Z_55Z 1.5s infinite alternate;
+}
+
+/* Flickering animation */
+@keyframes neon_flicker__Z_55Z {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #0B666A,
+      0 0 80px #0B666A, 0 0 90px #0B666A, 0 0 100px #0B666A, 0 0 150px #0B666A;
+  }
+
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+}
+
